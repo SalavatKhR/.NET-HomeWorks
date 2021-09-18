@@ -4,7 +4,7 @@ using Homework1;
 
 namespace Homework1Tests
 {
-    public class HomeWorkTest
+    public class HW1UnitTests
     {
         [Theory]
         [InlineData(1, "+", 2, 3)]
