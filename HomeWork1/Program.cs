@@ -1,12 +1,27 @@
 ﻿using System;
+using System.Linq;
 
-namespace HomeWork1
+namespace Homework1
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static int Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var parseResult = Parser.TryParseArguments(
+                args, 
+                out var val1, 
+                out var operation,
+                out var val2);
+            
+            if (parseResult != 0)
+            {
+                return parseResult;
+            }
+
+            var result = Calculator.Calculate(operation, val1, val2);
+
+            Console.WriteLine($"{args[0]}{args[1]}{args[2]}={result}");
+            return 0;
         }
     }
 }
