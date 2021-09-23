@@ -1,8 +1,8 @@
 ﻿namespace Homework1
 {
-    public static class Calculator
+    internal static class Calculator
     {
-        public static int Calculate(int val1, string operation, int val2)
+        public static int Calculate(string operation, int val1, int val2)
         {
             var result = operation switch
             {

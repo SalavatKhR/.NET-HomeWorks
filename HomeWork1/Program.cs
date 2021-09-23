@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace Homework1
 {
-    public static class Program
+    internal static class Program
     {
-        public static int Main(string[] args)
+        private static int Main(string[] args)
         {
             var parseResult = Parser.TryParseArguments(
                 args, 
@@ -18,7 +18,7 @@ namespace Homework1
                 return parseResult;
             }
 
-            var result = Calculator.Calculate(val1, operation, val2);
+            var result = Calculator.Calculate(operation, val1, val2);
 
             Console.WriteLine($"{args[0]}{args[1]}{args[2]}={result}");
             return 0;
