@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Homework1
 {
-    static internal class Parser
+    public static class Parser
     {
         private static readonly string[] SupportedOperations = {
             "+",
