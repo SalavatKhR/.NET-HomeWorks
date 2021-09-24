@@ -12,7 +12,7 @@ namespace Homework1Tests
         [InlineData(2, "*", 4, 8)]
         [InlineData(14, "/", 2, 7)]
         [InlineData(10, "l", 3, 0)]
-        public void Should_Calculate_Correctly(int val1, string operation, int val2, double expected)
+        public void Calculate_Correctly(double val1, string operation, double val2, double expected)
         {
             var actual = Calculator.Calculate(val1, operation, val2);
             
@@ -20,21 +20,22 @@ namespace Homework1Tests
         }
         
         [Theory] 
-        [InlineData(new string[] {"1", "+", "3"}, 0)]
-        [InlineData(new string[] {"1", ".", "3"}, 2)]
-        [InlineData(new string[] {"v", "-", "3"}, 1)]
-        public void Should_TryParseArguments_Correctly(string[] args, int expected)
+        [InlineData(new []{"1", "+", "3"}, 0)]
+        [InlineData(new []{"1", ".", "3"}, 2)]
+        [InlineData(new []{"v", "-", "3"}, 1)]
+        [InlineData(new []{"5", "/", "0"}, 3)]
+        public void TryParseArguments_Correctly(string[] args, int expected)
         {
-            var actual = Parser.TryParseArguments(args,  out int val1, out string operation, out int val2);
+            var actual = Parser.TryParseArguments(args, out double val1, out string operation, out double val2);
             
             Assert.Equal(expected, actual);
         }
 
         [Theory]
-        [InlineData(new string[] { "1", "+", "3" }, 0)]
-        [InlineData(new string[] { "g", "+", "3" }, 1)]
-        [InlineData(new string[] { "1", ".", "3" }, 2)]
-        public void Should_Program_Correctly(string[] args, int expected)
+        [InlineData(new []{ "1", "+", "3" }, 0)]
+        [InlineData(new []{ "g", "+", "3" }, 1)]
+        [InlineData(new []{ "1", ".", "3" }, 2)]
+        public void Program_Correctly(string[] args, int expected)
         {
             var actual = Program.Main(args);
 
