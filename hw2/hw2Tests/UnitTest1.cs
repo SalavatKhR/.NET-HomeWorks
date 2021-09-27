@@ -7,7 +7,7 @@ namespace hw2Tests
     public class UnitTest1
     {
         [Theory]
-        [InlineData(1, "+", 2, 3)]
+        [InlineData(1, "+", 3, 3)]
         [InlineData(7, "-", 2, 5)]
         [InlineData(2, "*", 4, 8)]
         [InlineData(14, "/", 2, 7)]
