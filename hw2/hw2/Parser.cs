@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Homework1
+namespace hw2
 {
     public static class Parser
     {

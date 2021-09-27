@@ -1,10 +1,10 @@
 using System;
 using Xunit;
-using Homework1;
+using hw2;
 
-namespace Homework1Tests
+namespace hw2Tests
 {
-    public class HW1UnitTests
+    public class UnitTest1
     {
         [Theory]
         [InlineData(1, "+", 2, 3)]

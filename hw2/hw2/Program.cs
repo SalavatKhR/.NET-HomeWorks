@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Linq;
 
-namespace Homework1
+namespace hw2
 {
-    public static class Program
+    public class Program
     {
         public static int Main(string[] args)
         {
