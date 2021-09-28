@@ -1,4 +1,6 @@
 ﻿using System;
+using hw2IL;
+
 
 namespace hw2
 {
@@ -6,19 +8,13 @@ namespace hw2
     {
         public static int Main(string[] args)
         {
-            var parseResult = Parser.TryParseArguments(
-                args, 
-                out var val1, 
-                out var operation,
-                out var val2);
+            var parseRes = ParserIl.TryParseArguments(args, out var val1,
+                out var operation, out var val2); 
+
+            if (parseRes != 0) return parseRes;
+
+            var result = Calculalator.Calculate(val1, operation, val2);
             
-            if (parseResult != 0)
-            {
-                return parseResult;
-            }
-
-            var result = Calculator.Calculate(val1, operation, val2);
-
             Console.WriteLine($"{args[0]}{args[1]}{args[2]}={result}");
             return 0;
         }
