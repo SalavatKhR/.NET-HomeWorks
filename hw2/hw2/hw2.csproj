@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>hw1</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="coverlet.collector" Version="3.1.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="System.Runtime" Version="4.3.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\hw2IL\hw2IL.ilproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\hw2IL\hw2IL.ilproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="bin\Debug\hw1.1.0.0.nupkg" />
+      <Content Include="bin\Debug\net5.0\hw1.deps.json" />
+      <Content Include="bin\Debug\net5.0\hw1.exe" />
+      <Content Include="bin\Debug\net5.0\hw1.runtimeconfig.dev.json" />
+      <Content Include="bin\Debug\net5.0\hw1.runtimeconfig.json" />
+      <Content Include="bin\Debug\net5.0\hw2.deps.json" />
+      <Content Include="bin\Debug\net5.0\hw2.dll" />
+      <Content Include="bin\Debug\net5.0\hw2.exe" />
+      <Content Include="bin\Debug\net5.0\hw2.pdb" />
+      <Content Include="bin\Debug\net5.0\hw2.runtimeconfig.dev.json" />
+      <Content Include="bin\Debug\net5.0\hw2.runtimeconfig.json" />
+      <Content Include="bin\Debug\net5.0\hw2IL.dll" />
+      <Content Include="bin\Debug\net5.0\ref\hw1.dll" />
+      <Content Include="bin\Debug\net5.0\ref\hw2.dll" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="obj\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="obj\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="obj\**" />
+    </ItemGroup>
+
+</Project>

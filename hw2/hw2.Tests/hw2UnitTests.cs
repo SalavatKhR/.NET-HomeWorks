@@ -1,10 +1,10 @@
-using System;
+﻿using hw2;
 using Xunit;
-using Homework1;
+using hw2IL;
 
-namespace Homework1Tests
+namespace hw1.Tests
 {
-    public class HW1UnitTests
+    public class hw2UnitTests
     {
         [Theory]
         [InlineData(1, "+", 2, 3)]
@@ -14,7 +14,7 @@ namespace Homework1Tests
         [InlineData(10, "l", 3, 0)]
         public void Calculate_Correctly(double val1, string operation, double val2, double expected)
         {
-            var actual = Calculator.Calculate(val1, operation, val2);
+            var actual = Calculalator.Calculate(val1, operation, val2);
             
             Assert.Equal(expected, actual);
         }
@@ -26,7 +26,7 @@ namespace Homework1Tests
         [InlineData(new []{"5", "/", "0"}, 3)]
         public void TryParseArguments_Correctly(string[] args, int expected)
         {
-            var actual = Parser.TryParseArguments(args, out double val1, out string operation, out double val2);
+            var actual = ParserIl.TryParseArguments(args, out double val1, out string operation, out double val2);
             
             Assert.Equal(expected, actual);
         }
