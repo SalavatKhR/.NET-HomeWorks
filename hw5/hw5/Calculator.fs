@@ -3,7 +3,7 @@ open hw5.Parser
     
     let Calculate (arg1 : decimal) (operation) (arg2 : decimal) =
         if (operation = "/" && arg2 = (decimal) 0) then
-            Failure "Attemped division by zero"
+            Failure "Division by zero"
         else
             let result =
                 match operation with

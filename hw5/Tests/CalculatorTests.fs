@@ -26,4 +26,4 @@ let ``Calculate works correctly with correct float/double/decimal values`` (arg1
 [<InlineData(2.5, "/", 0)>]
 let ``Calculate gives failure when division by zero`` (arg1, op, arg2) =
     let result = Calculate arg1 op arg2
-    Assert.Equal(Failure "Attemped division by zero", result)
+    Assert.Equal(Failure "Division by zero", result)

@@ -4,10 +4,6 @@ open Parser
 
 [<EntryPoint>]
 let main args =
-    if args.Length < 3 then
-                printfn "Insufficient amount of arguments."
-                -1
-    else
         let calculated = result {
                       let arg1, operation, arg2 = TryParseArguments args
                       let! val1 = arg1
