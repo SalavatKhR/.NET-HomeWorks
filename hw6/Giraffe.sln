@@ -4,6 +4,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "hw5", "hw5\hw5.fsproj", "{5
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Giraffe", "hw6Girafee\Giraffe.fsproj", "{18F5D1D4-5C54-4EAA-A5FF-1B7207E19235}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hw6.Tests", "hw6.Tests\hw6.Tests.csproj", "{1324ED82-799E-4555-8112-F9ED0241E325}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{18F5D1D4-5C54-4EAA-A5FF-1B7207E19235}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18F5D1D4-5C54-4EAA-A5FF-1B7207E19235}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18F5D1D4-5C54-4EAA-A5FF-1B7207E19235}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1324ED82-799E-4555-8112-F9ED0241E325}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1324ED82-799E-4555-8112-F9ED0241E325}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1324ED82-799E-4555-8112-F9ED0241E325}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1324ED82-799E-4555-8112-F9ED0241E325}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
