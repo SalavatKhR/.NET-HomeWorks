@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace hw7.Controllers
 {
-    public class HomeController : Controller
+    public class  HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
 
@@ -32,7 +32,7 @@ namespace hw7.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View(new UserProfile("Daniil", "Dedashev", UserProfile.Gender.Male, 19));
+            return View(new UserProfile("Salavat", "Khasanov", UserProfile.Gender.Male, 19));
         }
         
         [HttpGet]
