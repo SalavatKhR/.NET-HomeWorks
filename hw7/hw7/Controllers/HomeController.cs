@@ -18,25 +18,24 @@ namespace hw7.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult MyMethod()
         {
             return View();
         }
+        
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View(new UserProfile());
+        }
 
         [HttpPost]
-        public IActionResult Create([FromForm] UserProfile profile)
+        public IActionResult Create(UserProfile profile)
         {
             return View(profile);
         }
 
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View(new UserProfile("Salavat", "Khasanov", UserProfile.Gender.Male, 19));
-        }
-        
-        [HttpGet]
-        public IActionResult MyMethod()
+        public IActionResult Index()
         {
             return View();
         }
