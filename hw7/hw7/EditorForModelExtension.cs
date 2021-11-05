@@ -22,11 +22,13 @@ namespace hw7
             
             foreach (var property in properties)
             {
+                var name = property.GetCustomAttribute<DisplayAttribute>()?.GetName() 
+                           ?? Parser.SplitCamelCase(property.Name);
                 if (property.PropertyType == typeof(string))
                 {
                     builder.AppendHtml(
                         "<div class = \"editor-field\">" +
-                        $"<label for=\"{property.Name} \">{property.Name}</label>" +
+                        $"<label for=\"{property.Name} \">{name}</label>" +
                         $"<p><input  type = \"text \" id=\"{property.Name}\"></p>" +
                         "</div>"
                         );
@@ -36,7 +38,7 @@ namespace hw7
                 {
                     builder.AppendHtml(
                         "<div class = \"editor-field\">" +
-                        $"<label for=\"{property.Name} \">{property.Name}</label>" +
+                        $"<label for=\"{property.Name} \">{name}</label>" +
                         $"<p><input type=\"number\" min=\"1\" max=\"100\" step=\" id=\"{property.Name}\"></p>" +
                         "</div>"
                     );
@@ -54,7 +56,7 @@ namespace hw7
 
                     builder.AppendHtml( 
                         "<div class=\"editor-field\">" + 
-                        $"<label for=\"{property.Name}\">{property.Name}</label>" +
+                        $"<label for=\"{property.Name}\">{name}</label>" +
                         "<p><select class=\"form-select form-select-lb mb-3\">" +
                         $"{options}" +
                         "</select><p></div>"

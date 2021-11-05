@@ -27,6 +27,9 @@ namespace hw7.Models
     public enum Gender
     {
         Female,
-        Male
+        Male,
+        Mmmmmmmmm,
+        Сяки_маки,
+        AttackHelicopter
     }
 }
