@@ -22,6 +22,7 @@ namespace hw7
             
             foreach (var property in properties)
             {
+				var validationResult = ValidateProperty(property, model);
                 var name = property.GetCustomAttribute<DisplayAttribute>()?.GetName() 
                            ?? Parser.SplitCamelCase(property.Name);
                 if (property.PropertyType == typeof(string))
@@ -29,8 +30,7 @@ namespace hw7
                     builder.AppendHtml(
                         "<div class = \"editor-field\">" +
                         $"<label for=\"{property.Name} \">{name}</label>" +
-                        $"<p><input  type = \"text \" id=\"{property.Name}\"></p>" +
-                        "</div>"
+                        "</div>" + validationResult
                         );
                 }
                 
@@ -39,8 +39,7 @@ namespace hw7
                     builder.AppendHtml(
                         "<div class = \"editor-field\">" +
                         $"<label for=\"{property.Name} \">{name}</label>" +
-                        $"<p><input type=\"number\" min=\"1\" max=\"100\" step=\" id=\"{property.Name}\"></p>" +
-                        "</div>"
+                        "</div>" + validationResult
                     );
                 }
                  
@@ -66,6 +65,36 @@ namespace hw7
 
             builder.AppendHtml("</fieldset><input type=\"submit\" class=\"btn btn-primary\"> </form>");
             return builder;
+        }
+
+		private static string ValidateProperty(PropertyInfo property, object model)
+        {
+            var builder = new StringBuilder();
+            var attribute = property.GetCustomAttribute<ValidationAttribute>();
+            var inputType = property.PropertyType.IsValueType ? "number" : "text";
+            var val = property.GetValue(model);
+            if (attribute == null && !property.PropertyType.IsEnum)
+                return
+                    $"<div class=\"editor-field\"><input class=\"text-box single-line\" id=\"{property.Name}\"" +
+                    $" name=\"{property.Name}\"" +
+                    $" type=\"{inputType}\" value=\"{val}\"> <span class=\"field-validation-valid\" " +
+                    "data-valmsg-for=\"FirstName\" " +
+                    "data-valmsg-replace=\"true\"></span></div>";
+            if (attribute != null && attribute.IsValid(val)) 
+                return 
+                    "<div class=\"editor-field\"> <input class=\"text-box single-line\"" +
+                    $"data-val=\"true\" data-val-length={attribute.ErrorMessage}" +
+                    $"data-val-length-max=\"10\" data-val-length-min=\"2\" id=\"{property.Name}\""+
+                    $"maxlength=\"10\" name=\"{property.Name}\" type=\"{inputType}\" value=\"{val}\"> " +
+                    "<span class=\"field-validation-valid\"" +
+                    $"data-valmsg-for=\"{property.Name}\" data-valmsg-replace=\"{true}\"></span></div>";
+                
+            return 
+                    "<div class=\"editor-field\"> <input class=\"input-validation-error text-box single-line\"" +
+                    $"data-val=\"true\" data-val-length={attribute?.ErrorMessage}" +
+                    $"data-val-length-max=\"10\" data-val-length-min=\"2\" id=\"{property.Name}\""+
+                    $"maxlength=\"10\" name=\"{property.Name}\" type=\"{inputType}\" value=\"{val}\"> <span class=\"field-validation-error\"" +
+                    $"data-valmsg-for=\"{property.Name}\" data-valmsg-replace=\"{true}\">{attribute?.ErrorMessage}</span></div>";
         }
     }
 }
