@@ -21,13 +21,7 @@ namespace hw9.ExpressionTree
         {
             var operators = new Stack<string>();
             var postfix = new Stack<string>();
-            var replacedExpr = expression
-                .Replace("plus", "+")
-                .Replace("subtract", "-")
-                .Replace("minus", "-")
-                .Replace("multiply", "*")
-                .Replace("divide", "/");
-            foreach (var i in string.Join(" ", _inputSplit.Split(replacedExpr)).Split(" "))
+            foreach (var i in string.Join(" ", _inputSplit.Split(expression)).Split(" "))
             {
                 if (i == "(")
                 {

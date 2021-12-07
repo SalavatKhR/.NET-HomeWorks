@@ -9,10 +9,12 @@ namespace hw9.Controllers
     public class CalculatorController : Controller
     {
             [HttpGet, Route("calculate")]
-            public IActionResult Calc([FromServices] ICalculator calc, string input)
+            public IActionResult Calc(string input)
             {
-                var result = calc.Calculate(input);
-                return Content(result);
+                var expressionTree = ExpressionTreeBuilder.BuildTree(input);
+                var result = Expression.Lambda<Func<double>>(new Visitor().Visit(expressionTree)).Compile().Invoke();
+                //var result = calc.Calculate(expressionTree);
+                return Content(result.ToString());
             }
     }
 }

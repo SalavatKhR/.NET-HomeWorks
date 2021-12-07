@@ -4,13 +4,12 @@ using hw9.ExpressionTree;
 
 namespace hw9.Services
 {
-    public class Calculator: ICalculator
+    class Calculator: ICalculator
     {
 
-            public string Calculate(string expression)
+            public string Calculate(Expression expression)
             {
-                var expressionTree = ExpressionTreeBuilder.BuildTree(expression);
-                return CalclateAsync(expressionTree).Result.ToString();
+                return CalclateAsync(expression).Result.ToString();
             }
 
             public async Task<double> CalclateAsync(Expression node)
