@@ -3,7 +3,10 @@ using Microsoft.Extensions.Logging;
 
 namespace hw11.ExceptionHandler
 {
-    public class ExceptionHandler: IExceptionHandler
+    public class ExceptionHandler: IExceptionHandler,
+        IExceptionHandler<ArgumentNullException>,
+        IExceptionHandler<DivideByZeroException>,
+        IExceptionHandler<InvalidOperationException>
     {
         private ILogger Logger;
 
@@ -12,16 +15,25 @@ namespace hw11.ExceptionHandler
             Logger = logger;
         }
 
-        public void Aggregate(Exception e)
+        public void HandleException<T>(T exception) where T : Exception
         {
-            Handle((dynamic) e);
+            var handler = this as IExceptionHandler<T>;
+            if(handler != null)
+                handler.Handle(exception);
+            else
+                this.Handle(exception as dynamic);
         }
         
-        public void Handle(Exception e)
+        public void Handle(Exception exception)
         {
-            Logger.LogError($"Unidentified exception {e}");
+            OnFallback(exception);
         }
 
+        protected virtual void OnFallback(Exception exception)
+        {
+            Logger.LogError($"Unidentified exception {exception}");
+        }
+        
         public void Handle(ArgumentNullException e)
         {
             Logger.LogError($"ArgumentNullException");

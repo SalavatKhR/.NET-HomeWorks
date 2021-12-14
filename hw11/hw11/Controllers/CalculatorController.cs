@@ -33,7 +33,7 @@ namespace hw11.Controllers
             }
             catch (Exception e)
             {
-                handler.Aggregate(e);
+                handler.HandleException(e);
                 return Content("Check Log");
             }
         }
