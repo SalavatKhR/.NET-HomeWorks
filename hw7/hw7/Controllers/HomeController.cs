@@ -30,8 +30,9 @@ namespace hw7.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(UserProfile profile)
+        public IActionResult Create([FromForm] UserProfile profile)
         {
+            Console.WriteLine("ЫЫЫЫЫЫЫ");
             return View(profile);
         }
 

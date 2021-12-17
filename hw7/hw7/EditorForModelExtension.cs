@@ -13,7 +13,6 @@ namespace hw7
     {
         public static IHtmlContent MyEditorForModel(this IHtmlHelper htmlHelper)
         {
-            
             var model = htmlHelper.ViewData.Model;
             var properties = model.GetType().GetProperties();
             var builder = new HtmlContentBuilder();
@@ -25,25 +24,18 @@ namespace hw7
 				var validationResult = ValidateProperty(property, model);
                 var name = property.GetCustomAttribute<DisplayAttribute>()?.GetName() 
                            ?? Parser.SplitCamelCase(property.Name);
-                if (property.PropertyType == typeof(string))
+
+                if (property.PropertyType == typeof(int) || property.PropertyType == typeof(string))
                 {
                     builder.AppendHtml(
                         "<div class = \"editor-field\">" +
                         $"<label for=\"{property.Name} \">{name}</label>" +
-                        "</div>" + validationResult
-                        );
-                }
-                
-                if (property.PropertyType == typeof(int))
-                {
-                    builder.AppendHtml(
-                        "<div class = \"editor-field\">" +
-                        $"<label for=\"{property.Name} \">{name}</label>" +
-                        "</div>" + validationResult
+                        $"{validationResult}" +
+                        "</div>"
                     );
                 }
                  
-                if (property.PropertyType.IsEnum)
+                else if (property.PropertyType.IsEnum)
                 {
                     var fields = property.PropertyType.GetFields();
                     var options = new StringBuilder();
@@ -62,14 +54,12 @@ namespace hw7
                         );
                 }
             }
-
-            builder.AppendHtml("</fieldset><input type=\"submit\" class=\"btn btn-primary\"> </form>");
+            
             return builder;
         }
 
 		private static string ValidateProperty(PropertyInfo property, object model)
         {
-            var builder = new StringBuilder();
             var attribute = property.GetCustomAttribute<ValidationAttribute>();
             var inputType = property.PropertyType.IsValueType ? "number" : "text";
             var val = property.GetValue(model);
@@ -83,17 +73,17 @@ namespace hw7
             if (attribute != null && attribute.IsValid(val)) 
                 return 
                     "<div class=\"editor-field\"> <input class=\"text-box single-line\"" +
-                    $"data-val=\"true\" data-val-length={attribute.ErrorMessage}" +
-                    $"data-val-length-max=\"10\" data-val-length-min=\"2\" id=\"{property.Name}\""+
-                    $"maxlength=\"10\" name=\"{property.Name}\" type=\"{inputType}\" value=\"{val}\"> " +
+                    $"data-val=\"true\" data-val-length=\"{attribute.ErrorMessage}\"" +
+                    $"data-val-length-max=\"15\" data-val-length-min=\"2\" id=\"{property.Name}\""+
+                    $"maxlength=\"15\" name=\"{property.Name}\" type=\"{inputType}\" value=\"{val}\"> " +
                     "<span class=\"field-validation-valid\"" +
                     $"data-valmsg-for=\"{property.Name}\" data-valmsg-replace=\"{true}\"></span></div>";
                 
             return 
                     "<div class=\"editor-field\"> <input class=\"input-validation-error text-box single-line\"" +
-                    $"data-val=\"true\" data-val-length={attribute?.ErrorMessage}" +
-                    $"data-val-length-max=\"10\" data-val-length-min=\"2\" id=\"{property.Name}\""+
-                    $"maxlength=\"10\" name=\"{property.Name}\" type=\"{inputType}\" value=\"{val}\"> <span class=\"field-validation-error\"" +
+                    $"data-val=\"true\" data-val-length=\"{attribute?.ErrorMessage}\"" +
+                    $"data-val-length-max=\"15\" data-val-length-min=\"2\" id=\"{property.Name}\""+
+                    $"maxlength=\"15\" name=\"{property.Name}\" type=\"{inputType}\" value=\"{val}\"> <span class=\"field-validation-error\"" +
                     $"data-valmsg-for=\"{property.Name}\" data-valmsg-replace=\"{true}\">{attribute?.ErrorMessage}</span></div>";
         }
     }
