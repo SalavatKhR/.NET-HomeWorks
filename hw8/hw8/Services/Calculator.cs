@@ -15,10 +15,10 @@
             if(isValidArgs)
                 result = op switch
                 {
-                    "plus" => $"{val1 + val2}",
-                    "minus" => $"{val1 - val2}",
-                    "multiply" => $"{val1 * val2}",
-                    "divide" => (val2 != 0) ? $"{val1 / val2}" : "Divide by zero!",
+                    "+" => $"{val1 + val2}",
+                    "-" => $"{val1 - val2}",
+                    "*" => $"{val1 * val2}",
+                    "/" => (val2 != 0) ? $"{val1 / val2}" : "Divide by zero!",
                     _ => "Wrong operation!"
                 };
             else
