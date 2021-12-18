@@ -36,7 +36,7 @@ namespace hw8.Tests
         [InlineData("5","0","5")]
         public async Task Add_withCorrectValues_ReturnsCorrect(string arg1, string arg2, string expected)
         {
-            await Test(arg1, "plus", arg2, expected);
+            await Test(arg1, "%2b", arg2, expected);
         }
         
         [Theory]
@@ -47,7 +47,7 @@ namespace hw8.Tests
         [InlineData("3","0", "3")]
         public async Task Substract_withCorrectValues_ReturnsCorrect(string arg1, string arg2, string expected)
         {
-            await Test(arg1, "minus", arg2, expected);
+            await Test(arg1, "-", arg2, expected);
         }
 
         [Theory]
@@ -58,7 +58,7 @@ namespace hw8.Tests
         [InlineData("0,5","0,5","0,25")]
         public async Task Multiply_withCorrectValues_ReturnsCorrect(string arg1, string arg2, string expected)
         {
-            await Test(arg1, "multiply", arg2, expected);
+            await Test(arg1, "*", arg2, expected);
         }
         
         [Theory]
@@ -68,14 +68,14 @@ namespace hw8.Tests
         [InlineData("2","5","0,4")]
         public async Task Divide_withCorrectValues_ReturnsCorrect(string arg1, string arg2, string expected)
         {
-            await Test(arg1, "divide", arg2, expected);
+            await Test(arg1, "/", arg2, expected);
         }
         
         [Theory]
-        [InlineData("a","plus","2", "Wrong arguments!")]
-        [InlineData("5","minus","b", "Wrong arguments!")]
+        [InlineData("a","%2b","2", "Wrong arguments!")]
+        [InlineData("5","-","b", "Wrong arguments!")]
         [InlineData("-2","df","0", "Wrong operation!")]
-        [InlineData("5","divide","0","Divide by zero!")]
+        [InlineData("5","/","0","Divide by zero!")]
         public async Task Calculate_withInCorrectValues(string arg1, string operation, string arg2, string expected)
         {
             await Test(arg1, operation, arg2, expected);
