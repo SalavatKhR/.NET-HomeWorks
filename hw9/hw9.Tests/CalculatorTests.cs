@@ -26,12 +26,15 @@ namespace hw9.Tests
         }
         
         [Theory]
+        [InlineData("(4-2)*6","12")]
         [InlineData("1%2b5%2b3","9")]
         [InlineData("5%2b3-2","6")]
         [InlineData("5%2b1%2b2*3","12")]
-        [InlineData("5%2b%281%2b2%29*3","14")]
+        [InlineData("5%2b(1%2b2)*3","14")]
         [InlineData("6/3/2","1")]
         [InlineData("3","3")]
+        [InlineData("7*(4-2)","14")]
+        [InlineData("8-(4%2b2)","2")]
         public async Task Calculate_withCorrectValues_ReturnsCorrect(string expression, string expected)
         {
             await Test(expression, expected);

@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 
 namespace hw9.ExpressionTree
@@ -17,11 +19,11 @@ namespace hw9.ExpressionTree
         private static readonly Regex _inputSplit = new ("(?<=[-+*/\\(\\)])|(?=[-+*/\\(\\)])");
         private static readonly Regex _operand = new ("[0-9]+");
 
-        public static string ToPostfix(string expression)
+        public static string ToPostfix(string expression) 
         {
             var operators = new Stack<string>();
             var postfix = new Stack<string>();
-            foreach (var i in string.Join(" ", _inputSplit.Split(expression)).Split(" "))
+            foreach (var i in string.Join(" ", _inputSplit.Split(expression)).Split(new string[]{" "}, StringSplitOptions.RemoveEmptyEntries))
             {
                 if (i == "(")
                 {
