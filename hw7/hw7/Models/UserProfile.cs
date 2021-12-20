@@ -4,14 +4,14 @@ namespace hw7.Models
 {
     public class UserProfile
     {
-        [StringLength(15, MinimumLength = 2, ErrorMessage = "Необходимо указать своё имя.")]
+        [StringLength(15, MinimumLength = 2, ErrorMessage = "Укажите корректные данные")]
         [Display(Name="Имя")]
         public string FirstName { get; set; }
         
-        [StringLength(15, MinimumLength = 2, ErrorMessage = "Необходимо указать свою фамилию.")]
+        [StringLength(15, MinimumLength = 2, ErrorMessage = "Укажите корректные данные")]
         public string LastName { get; set; }
         
-        [Range(0, 100, ErrorMessage = "Необходимо указать корректное значение.")]
+        [Range(1, 110, ErrorMessage = "Укажите корректные данные")]
         [Display(Name = "Возраст")]
         public int Age { get; set; }
         
@@ -26,10 +26,7 @@ namespace hw7.Models
     
     public enum Gender
     {
-        Female,
         Male,
-        Mmmmmmmmm,
-        Сяки_маки,
-        AttackHelicopter
+        Female
     }
 }

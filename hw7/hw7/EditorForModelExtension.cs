@@ -24,7 +24,7 @@ namespace hw7
 				var validationResult = ValidateProperty(property, model);
                 var name = property.GetCustomAttribute<DisplayAttribute>()?.GetName() 
                            ?? Parser.SplitCamelCase(property.Name);
-
+    
                 if (property.PropertyType == typeof(int) || property.PropertyType == typeof(string))
                 {
                     builder.AppendHtml(
@@ -39,6 +39,7 @@ namespace hw7
                 {
                     var fields = property.PropertyType.GetFields();
                     var options = new StringBuilder();
+                    var val = property.GetValue(model);
                     foreach (var field in fields)
                     {   
                         if ("value__" == field.Name) continue;
@@ -48,7 +49,7 @@ namespace hw7
                     builder.AppendHtml( 
                         "<div class=\"editor-field\">" + 
                         $"<label for=\"{property.Name}\">{name}</label>" +
-                        "<p><select class=\"form-select form-select-lb mb-3\">" +
+                        $"<p><select class=\"form-select form-select-lb mb-3\" name=\"{property.Name}\" value=\"{val}\">" +
                         $"{options}" +
                         "</select><p></div>"
                         );
@@ -65,26 +66,21 @@ namespace hw7
             var val = property.GetValue(model);
             if (attribute == null && !property.PropertyType.IsEnum)
                 return
-                    $"<div class=\"editor-field\"><input class=\"text-box single-line\" id=\"{property.Name}\"" +
-                    $" name=\"{property.Name}\"" +
-                    $" type=\"{inputType}\" value=\"{val}\"> <span class=\"field-validation-valid\" " +
-                    "data-valmsg-for=\"FirstName\" " +
-                    "data-valmsg-replace=\"true\"></span></div>";
-            if (attribute != null && attribute.IsValid(val)) 
+                    $"<div class=\"editor-field\">" +
+                    $"<input type=\"{inputType}\" class=\"text-box single-line\" placeholder=\"{property.Name}\"" +
+                    $" min=\"10\" max=\"110\" minlength=\"2\" maxlength=\"10\" name=\"{property.Name}\" " +
+                    $"id=\"{property.Name}\" value=\"{val}\">";
+
+            if (attribute != null && attribute.IsValid(val))
                 return 
-                    "<div class=\"editor-field\"> <input class=\"text-box single-line\"" +
-                    $"data-val=\"true\" data-val-length=\"{attribute.ErrorMessage}\"" +
-                    $"data-val-length-max=\"15\" data-val-length-min=\"2\" id=\"{property.Name}\""+
-                    $"maxlength=\"15\" name=\"{property.Name}\" type=\"{inputType}\" value=\"{val}\"> " +
-                    "<span class=\"field-validation-valid\"" +
-                    $"data-valmsg-for=\"{property.Name}\" data-valmsg-replace=\"{true}\"></span></div>";
-                
-            return 
-                    "<div class=\"editor-field\"> <input class=\"input-validation-error text-box single-line\"" +
-                    $"data-val=\"true\" data-val-length=\"{attribute?.ErrorMessage}\"" +
-                    $"data-val-length-max=\"15\" data-val-length-min=\"2\" id=\"{property.Name}\""+
-                    $"maxlength=\"15\" name=\"{property.Name}\" type=\"{inputType}\" value=\"{val}\"> <span class=\"field-validation-error\"" +
-                    $"data-valmsg-for=\"{property.Name}\" data-valmsg-replace=\"{true}\">{attribute?.ErrorMessage}</span></div>";
+                    $"<div class=\"editor-field\">" +
+                    $"<input type=\"{inputType}\" class=\"text-box single-line\" placeholder=\"{property.Name}\" min=\"10\" max=\"110\" minlength=\"2\" maxlength=\"10\"" +
+                    $"name=\"{property.Name}\"" +
+                    $"id=\"{property.Name}\" value=\"{val}\">";
+
+            return
+                $"<div class=\"editor-field\"> <input class=\"input-validation-error text-box single-line\"" +
+                $" name=\"{property.Name}\" type=\"{inputType}\" value=\"{val}\" min=\"10\" max=\"110\" minlength=\"2\" maxlength=\"10\">";
         }
     }
 }

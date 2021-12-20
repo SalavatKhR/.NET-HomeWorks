@@ -2,6 +2,11 @@
 
 @using (Html.BeginForm())
 {
+    <style>
+   input:invalid {
+    background: #fdd;
+   }
+   </style>
      <div class="form-group"> 
          @Html.ValidationSummary()  
      </div> 
