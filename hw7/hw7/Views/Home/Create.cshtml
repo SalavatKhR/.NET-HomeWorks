@@ -1,0 +1,25 @@
+﻿@model UserProfile
+
+@using (Html.BeginForm())
+{
+    <style>
+   input:invalid {
+    background: #fdd;
+   }
+   </style>
+     <div class="form-group"> 
+         @Html.ValidationSummary()  
+     </div> 
+    <div class="form-group">
+        @Html.MyEditorForModel()
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary">
+    </div> 
+    <div>
+        <h4>@Model.FirstName</h4>
+        <h4>@Model.LastName</h4>
+        <h4>@Model.Age</h4>
+        <h4>@Model.gender</h4>
+    </div>
+}
