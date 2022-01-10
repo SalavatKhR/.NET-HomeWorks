@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiServer", "UiServer\UiServer.csproj", "{1EDD2B12-B950-43E5-9417-A3CAEFC3706E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1EDD2B12-B950-43E5-9417-A3CAEFC3706E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EDD2B12-B950-43E5-9417-A3CAEFC3706E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EDD2B12-B950-43E5-9417-A3CAEFC3706E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EDD2B12-B950-43E5-9417-A3CAEFC3706E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
