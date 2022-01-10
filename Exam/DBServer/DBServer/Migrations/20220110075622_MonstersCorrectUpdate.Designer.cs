@@ -3,14 +3,16 @@ using DbServer.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DBServer.Migrations
 {
     [DbContext(typeof(MonstersContext))]
-    partial class MonstersContextModelSnapshot : ModelSnapshot
+    [Migration("20220110075622_MonstersCorrectUpdate")]
+    partial class MonstersCorrectUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

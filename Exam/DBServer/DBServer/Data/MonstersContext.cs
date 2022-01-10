@@ -7,6 +7,7 @@ namespace DbServer.Data
         public DbSet<Monsters> MonstersData { get; set; }
         public MonstersContext(DbContextOptions<MonstersContext> options) : base(options)
         {
+            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
         
@@ -16,54 +17,37 @@ namespace DbServer.Data
                 new Monsters()
                 {
                     Id = 1,
-                    MonsterName = "Griffon",
-                    HitPoints = 59,
-                    AtackModifier = 0,
-                    AtackPerRound = 0,
-                    Damage = 0,
-                    Weapon = 0,
-                    AC = 0,
-                    MinACtoAlwaysHit = 0,
-                    DamagePerRound  = 0,
+                    MonsterName = "Knight",
+                    HitPoints = 52,
+                    AttackModifier = 5,
+                    AttackPerRound = 2,
+                    Damage = "2d6",
+                    DamageModifier = 3,
+                    AC = 18,
+                    MinACtoAlwaysHit = 6,
                 },
                 new Monsters()
                 {
                     Id = 2,
                     MonsterName = "Swarm of rats",
                     HitPoints = 24,
-                    AtackModifier = 0,
-                    AtackPerRound = 0,
-                    Damage = 0,
-                    Weapon = 0,
-                    AC = 0,
-                    MinACtoAlwaysHit = 0,
-                    DamagePerRound  = 0,
+                    AttackModifier = 2,
+                    AttackPerRound = 1,
+                    Damage = "2d6",
+                    AC = 10,
+                    MinACtoAlwaysHit = 3
                 },
                 new Monsters()
                 {
                     Id = 3,
-                    MonsterName = "Mage",
-                    HitPoints = 40,
-                    AtackModifier = 0,
-                    AtackPerRound = 0,
-                    Damage = 0,
-                    Weapon = 0,
-                    AC = 0,
-                    MinACtoAlwaysHit = 0,
-                    DamagePerRound  = 0,
-                },
-                new Monsters()
-                {
-                    Id = 4,
-                    MonsterName = "Fire giant dreadnought",
-                    HitPoints = 187,
-                    AtackModifier = 5,
-                    AtackPerRound = 0,
-                    Damage = 0,
-                    Weapon = 0,
-                    AC = 21,
-                    MinACtoAlwaysHit = 0,
-                    DamagePerRound  = 0,
+                    MonsterName = "Baboon",
+                    HitPoints = 3,
+                    AttackModifier = 1,
+                    AttackPerRound = 1,
+                    Damage = "1d4",
+                    DamageModifier = 0,
+                    AC = 12,
+                    MinACtoAlwaysHit = 2
                 });
         }
     }

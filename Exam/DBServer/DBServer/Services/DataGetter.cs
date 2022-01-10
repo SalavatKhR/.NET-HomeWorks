@@ -19,8 +19,8 @@ namespace DbServer.Services
         {
             var maxId = Monsters.Max(m => m.Id);
             var rndId = new Random().Next(1, maxId+1);
-            var data = Monsters.Where(m => m.Id == rndId);
-            var result = JsonConvert.SerializeObject(data.First());
+            var data = Monsters.First(m => m.Id == rndId);
+            var result = JsonConvert.SerializeObject(data);
             return result;
         }
     }

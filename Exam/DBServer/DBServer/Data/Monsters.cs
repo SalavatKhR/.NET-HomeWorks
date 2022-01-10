@@ -8,18 +8,16 @@
 
         public int HitPoints { get; set; }
         
-        public int AtackModifier { get; set; } 
+        public int AttackModifier { get; set; } 
         
-        public int AtackPerRound { get; set; } 
+        public int AttackPerRound { get; set; } 
         
-        public int Damage { get; set; }
+        public string Damage { get; set; }
         
-        public int Weapon { get; set; }
-        
+        public int DamageModifier { get; set; }
+
         public int AC { get; set; }
         
-        public int MinACtoAlwaysHit { get; set; } 
-        
-        public int DamagePerRound { get; set; } 
+        public int MinACtoAlwaysHit { get; set; }
     }
 }
